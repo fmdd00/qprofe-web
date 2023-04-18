@@ -1,3 +1,5 @@
+import { Link } from 'react-router-dom';
+
 function Registro() {
     return (
         <div className="container">
@@ -29,7 +31,7 @@ function Registro() {
                             <input type="password" className="form-control" placeholder="Repite la contraseña" />
                         </div>
                         <div className="d-grid gap-2 col-4 mx-auto">
-                            <button type="submit" className="btn btn-primary">Crear cuenta</button>
+                            <Link to="/confRegistro" className="btn btn-primary">Crear cuenta</Link>
                         </div>
                     </form>
                 </div>
