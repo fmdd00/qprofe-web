@@ -1,4 +1,5 @@
 import React from 'react'
+import { Link } from 'react-router-dom'
 
 function Login() {
   return (
@@ -19,7 +20,7 @@ function Login() {
                             <input type="password" className="form-control" placeholder="Ingresar contraseña" />
                         </div>
                         <div className="d-grid gap-2 col-4 mx-auto">
-                            <button type="submit" className="btn btn-primary">Ingresar</button>
+                            <Link to="/foro" className="btn btn-primary">Ingresar</Link>
                         </div>
                     </form>
                 </div>
