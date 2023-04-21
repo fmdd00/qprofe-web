@@ -31,7 +31,7 @@ function Registro() {
                             <input type="password" className="form-control" placeholder="Repite la contraseña" />
                         </div>
                         <div className="d-grid gap-2 col-4 mx-auto">
-                            <Link to="/confRegistro" className="btn btn-primary">Crear cuenta</Link>
+                            <Link to="/confRegistro" className="btn btn-primary" >Crear cuenta</Link>
                         </div>
                     </form>
                 </div>
