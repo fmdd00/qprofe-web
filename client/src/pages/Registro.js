@@ -1,6 +1,36 @@
-import { Link } from 'react-router-dom';
+import { Link, useNavigate } from 'react-router-dom';
+import Validation from './RegistroValidation';
+import { useState } from 'react';
+import axios from 'axios'
 
 function Registro() {
+
+    const [values, setValues] = useState({
+        name: '',
+        email: '',
+        password: ''
+    })
+
+    const navigate = useNavigate();
+
+    const [errors, setErrors] = useState({})
+
+    const handleInput = (event) => {
+        setValues(prev => ({ ...prev, [event.target.name]: [event.target.value] }))
+    }
+
+    const handleSubmit = (event) => {
+        event.preventDefault();
+        setErrors(Validation(values));
+        if (errors.name === "" && errors.email === "" && errors.password === "") {
+            axios.post('http://localhost:8081/registro', values)
+                .then(res => {
+                    navigate('/confRegistro')
+                })
+                .catch(err => console.log(err));
+        }
+    }
+
     return (
         <div className="container">
             <div className="mt-4 border border-2 p-4 rounded col-6 mx-auto">
@@ -8,30 +38,44 @@ function Registro() {
                     <h1 className="text-center">REGISTRO</h1>
                 </div>
                 <div className="mt-4">
-                    <form>
+                    <form action='' onSubmit={handleSubmit}>
                         <div className="mb-3">
-                            <label className="form-label">Nombres y apellidos</label>
-                            <input className="form-control" type="text" placeholder="Nombre completo" />
+                            <label htmlFor="name" className="form-label">Nombres y apellidos:</label>
+                            <input
+                                onChange={handleInput}
+                                type="text"
+                                name="name"
+                                className="form-control"
+                                placeholder="Nombre completo"
+                            />
+                            {errors.name && <span className='text-danger'>{errors.name}</span>}
                         </div>
                         <div className="mb-3">
-                            <label className="form-label">Código de alumno</label>
-                            <input className="form-control" type="text" placeholder="Código Ulima" />
-                        </div>
-                        <div className="mb-3">
-                            <label className="form-label">Correo electrónico</label>
-                            <input type="email" className="form-control" placeholder="Ingresar email" />
+                            <label htmlFor="email" className="form-label">Correo electrónico:</label>
+                            <input
+                                onChange={handleInput}
+                                type="email"
+                                name="email"
+                                className="form-control"
+                                placeholder="Ingresar email"
+                            />
+                            {errors.email && <span className='text-danger'>{errors.email}</span>}
                             <div className="form-text">Nunca compartiremos tu correo con terceros.</div>
                         </div>
                         <div className="mb-3">
-                            <label for="exampleInputPassword1" className="form-label">Contraseña</label>
-                            <input type="password" className="form-control" placeholder="Ingresar contraseña" />
+                            <label htmlFor="password" className="form-label">Contraseña:</label>
+                            <input
+                                onChange={handleInput}
+                                name="password"
+                                type="password"
+                                className="form-control"
+                                placeholder="Ingresar contraseña"
+                            />
+                            {errors.password && <span className='text-danger'>{errors.password}</span>}
                         </div>
-                        <div className="mb-4">
-                            <label for="exampleInputPassword1" className="form-label">Confirmar contraseña</label>
-                            <input type="password" className="form-control" placeholder="Repite la contraseña" />
-                        </div>
-                        <div className="d-grid gap-2 col-4 mx-auto">
-                            <Link to="/confRegistro" className="btn btn-primary" >Crear cuenta</Link>
+                        <div className="d-grid gap-2">
+                            <button type='submit' className="btn btn-primary" >Crear cuenta</button>
+                            <Link to="login" className="btn btn-outline-secondary">Iniciar Sesión</Link>
                         </div>
                     </form>
                 </div>
