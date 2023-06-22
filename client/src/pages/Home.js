@@ -31,7 +31,7 @@ function Home() {
                   </button>
                 </div>
                 <div className="col-6 d-grid">
-                  <button className="btn btn-outline-primary btn-lg">
+                  <button className="btn btn-outline-secondary btn-lg">
                     <Link
                       to="/registro"
                       style={{ textDecoration: "none", color: "black" }}
