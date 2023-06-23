@@ -14,8 +14,8 @@ function Foro() {
                 <div class="pull-left m-r-md">
                   <i class="fa fa-globe text-navy mid-icon"></i>
                 </div>
-                <h2>Welcome to our forum</h2>
-                <span>Feel free to choose topic you're interested in.</span>
+                <h2>Bienvenido a Q'PROFE</h2>
+                <span>Sientete libre de hacer un post del tópico o curso que te interesa.</span>
               </div>
             </div>
 
