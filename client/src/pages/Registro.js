@@ -72,6 +72,7 @@ function Registro() {
                                 placeholder="Ingresar contraseña"
                             />
                             {errors.password && <span className='text-danger'>{errors.password}</span>}
+                            <div className="form-text">Al menos un una letra minuscula, una mayuscula, un número y un carácter especial.</div>
                         </div>
                         <div className="d-grid gap-2">
                             <button type='submit' className="btn btn-primary" >Crear cuenta</button>
