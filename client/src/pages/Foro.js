@@ -1,10 +1,12 @@
-import React from 'react'
+import React from 'react';
+import {Link} from 'react-router-dom';
 
 function Foro() {
   return (
     <html>
     <head>OKOKOK</head>
     <div class="container">
+      <Link to="/perfil" className='btn btn-success'>Perfil</Link>
       <div class="row">
         <div class="col-lg-12">
           <div class="wrapper wrapper-content animated fadeInRight">
