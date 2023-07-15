@@ -5,13 +5,40 @@ const Register = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
     const [password, setPassword] = useState("");
+    const navigate = useNavigate();
 
     const handleSubmit = (e) => {
         e.preventDefault();
         console.log({ username, email, password });
+        signUp();
         setEmail("");
         setUsername("");
         setPassword("");
+    };
+
+    const signUp = () => {
+        fetch("http://localhost:4000/api/register", {
+            method: "POST",
+            body: JSON.stringify({
+                email,
+                password,
+                username,
+            }),
+            headers: {
+                "Content-Type": "application/json",
+            },
+        })
+            .then((res) => res.json())
+            .then((data) => {
+                console.log(data);
+                if (data.error_message) {
+                    alert(data.error_message);
+                } else {
+                    alert("Cuenta creada exitosamente");
+                    navigate("/")
+                }
+            })
+            .catch((err) => console.error(err));
     };
 
     return (
