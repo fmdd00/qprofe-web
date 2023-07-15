@@ -1,5 +1,6 @@
 import React, { useState } from 'react';
 
+// Permite responder y ver comentarios en un hilo
 const Replies = () => {
     const [reply, setReply] = useState("");
 

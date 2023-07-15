@@ -1,6 +1,8 @@
 import React, { useState } from 'react';
 import { Link, useNavigate } from 'react-router-dom';
 
+// Muertra un form para que el usuario ingrese un username, email y contraseña y se comunica con 
+// el backend para almacenar estos datos en la BD
 const Register = () => {
     const [username, setUsername] = useState("");
     const [email, setEmail] = useState("");
@@ -16,6 +18,7 @@ const Register = () => {
         setPassword("");
     };
 
+    // Envía los credenciales del usuario al servidor por medio del api
     const signUp = () => {
         fetch("http://localhost:4000/api/register", {
             method: "POST",
@@ -28,6 +31,7 @@ const Register = () => {
                 "Content-Type": "application/json",
             },
         })
+        // Muestra la respuesta del servidor, sea éxito o error, para luego redirigir al usuario al Login
             .then((res) => res.json())
             .then((data) => {
                 console.log(data);
