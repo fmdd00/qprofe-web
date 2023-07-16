@@ -71,8 +71,6 @@ app.post("/api/create/thread", async (req, res) => {
 
 	await novu.topics.addSubscribers(threadId, {
 	 	subscribers: [userId],
-	 	//replace with your subscriber ID to test run
-		// subscribers: ["<YOUR_SUBSCRIBER_ID>"],
 	 });
 
 	res.json({
