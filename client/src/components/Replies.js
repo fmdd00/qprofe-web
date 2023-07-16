@@ -59,7 +59,7 @@ const Replies = () => {
 			<h1 className='repliesTitle'>{title}</h1>
 
 			<form className='modal__content' onSubmit={handleSubmitReply}>
-				<label htmlFor='reply'>Reply to the thread</label>
+				<label htmlFor='reply'>Responder al post</label>
 				<textarea
 					rows={5}
 					value={reply}
@@ -69,7 +69,7 @@ const Replies = () => {
 					className='modalInput'
 				/>
 
-				<button className='modalBtn'>SEND</button>
+				<button className='modalBtn'>Enviar</button>
 			</form>
 
 			<div className='thread__container'>
@@ -77,7 +77,7 @@ const Replies = () => {
 					<div className='thread__item'>
 						<p>{reply.text}</p>
 						<div className='react__container'>
-							<p style={{ opacity: "0.5" }}>by {reply.name}</p>
+							<p style={{ opacity: "0.5" }}>por {reply.name}</p>
 						</div>
 					</div>
 				))}

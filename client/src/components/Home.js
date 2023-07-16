@@ -50,10 +50,10 @@ const Home = () => {
 		<>
 			<Nav />
 			<main className='home'>
-				<h2 className='homeTitle'>Create a Thread</h2>
+				<h2 className='homeTitle'>Crear un Post</h2>
 				<form className='homeForm' onSubmit={handleSubmit}>
 					<div className='home__container'>
-						<label htmlFor='thread'>Title / Description</label>
+						<label htmlFor='thread'>¿De qué quieres hablar?</label>
 						<input
 							type='text'
 							name='thread'
@@ -62,7 +62,7 @@ const Home = () => {
 							onChange={(e) => setThread(e.target.value)}
 						/>
 					</div>
-					<button className='homeBtn'>CREATE THREAD</button>
+					<button className='homeBtn'>Crear hilo</button>
 				</form>
 
 				<div className='thread__container'>

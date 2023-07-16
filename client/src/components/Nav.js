@@ -18,7 +18,7 @@ const Nav = () => {
 	};
 	return (
 		<nav className='navbar'>
-			<h2>Threadify</h2>
+			<h2>QPROFE</h2>
 
 			<div className='navbarRight'>
 				<NovuProvider
@@ -34,7 +34,7 @@ const Nav = () => {
 						)}
 					</PopoverNotificationCenter>
 				</NovuProvider>
-				<button onClick={signOut}>Sign out</button>
+				<button onClick={signOut}>Cerrar Sesión</button>
 			</div>
 		</nav>
 	);

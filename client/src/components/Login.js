@@ -39,9 +39,9 @@ const Login = () => {
 
 	return (
 		<main className='login'>
-			<h1 className='loginTitle'>Log into your account</h1>
+			<h1 className='loginTitle'>Iniciar Sesión</h1>
 			<form className='loginForm' onSubmit={handleSubmit}>
-				<label htmlFor='email'>Email Address</label>
+				<label htmlFor='email'>Correo electrónico:</label>
 				<input
 					type='text'
 					name='email'
@@ -50,7 +50,7 @@ const Login = () => {
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 				/>
-				<label htmlFor='password'>Password</label>
+				<label htmlFor='password'>Contraseña:</label>
 				<input
 					type='password'
 					name='password'
@@ -59,9 +59,9 @@ const Login = () => {
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				<button className='loginBtn'>SIGN IN</button>
+				<button className='loginBtn'>Iniciar Sesión</button>
 				<p>
-					Don't have an account? <Link to='/register'>Create one</Link>
+					¿No tienes una cuenta? <Link to='/register'>Regístrate</Link>
 				</p>
 			</form>
 		</main>

@@ -25,7 +25,7 @@ const Register = () => {
 				if (data.error_message) {
 					alert(data.error_message);
 				} else {
-					alert("Account created successfully!");
+					alert("Cuenta creada exitosamente");
 					navigate("/");
 				}
 			})
@@ -41,9 +41,9 @@ const Register = () => {
 	};
 	return (
 		<main className='register'>
-			<h1 className='registerTitle'>Create an account</h1>
+			<h1 className='registerTitle'>Crea una cuenta</h1>
 			<form className='registerForm' onSubmit={handleSubmit}>
-				<label htmlFor='username'>Username</label>
+				<label htmlFor='username'>Nombre:</label>
 				<input
 					type='text'
 					name='username'
@@ -52,7 +52,7 @@ const Register = () => {
 					value={username}
 					onChange={(e) => setUsername(e.target.value)}
 				/>
-				<label htmlFor='email'>Email Address</label>
+				<label htmlFor='email'>Correo electrónico:</label>
 				<input
 					type='text'
 					name='email'
@@ -61,7 +61,7 @@ const Register = () => {
 					value={email}
 					onChange={(e) => setEmail(e.target.value)}
 				/>
-				<label htmlFor='password'>Password</label>
+				<label htmlFor='password'>Contraseña:</label>
 				<input
 					type='password'
 					name='password'
@@ -70,9 +70,9 @@ const Register = () => {
 					value={password}
 					onChange={(e) => setPassword(e.target.value)}
 				/>
-				<button className='registerBtn'>REGISTER</button>
+				<button className='registerBtn'>Registrarme</button>
 				<p>
-					Have an account? <Link to='/'>Sign in</Link>
+					¿Ya tienes una cuenta? <Link to='/'>Iniciar sesión</Link>
 				</p>
 			</form>
 		</main>

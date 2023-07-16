@@ -22,12 +22,12 @@ app.post("/api/login", (req, res) => {
 
 	if (result.length !== 1) {
 		return res.json({
-			error_message: "Incorrect credentials",
+			error_message: "Credenciales incorrectas",
 		});
 	}
 
 	res.json({
-		message: "Login successfully",
+		message: "Logueo exitoso",
 		id: result[0].id,
 	});
 });
@@ -45,11 +45,11 @@ app.post("/api/register", async (req, res) => {
 
 		users.push(newUser);
 		return res.json({
-			message: "Account created successfully!",
+			message: "Cuenta creada exitosamente",
 		});
 	}
 	res.json({
-		error_message: "User already exists",
+		error_message: "El usuario ya existe",
 	});
 });
 
@@ -76,7 +76,7 @@ app.post("/api/create/thread", async (req, res) => {
 	 });
 
 	res.json({
-		message: "Thread created successfully!",
+		message: "Post creado exitosamente",
 		threads: threadList,
 	});
 });
@@ -97,11 +97,11 @@ app.post("/api/thread/like", (req, res) => {
 	if (authenticateReaction.length === 0) {
 		threadLikes.push(userId);
 		return res.json({
-			message: "You've reacted to the post!",
+			message: "Has reaccionado al post",
 		});
 	}
 	res.json({
-		error_message: "You can only react once!",
+		error_message: "Solo puedes reaccionar una vez",
 	});
 });
 
@@ -125,7 +125,7 @@ app.post("/api/create/reply", async (req, res) => {
 	 });
 
 	res.json({
-		message: "Response added successfully!",
+		message: "Respuesta agregada",
 	});
 });
 
