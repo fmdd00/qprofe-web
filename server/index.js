@@ -14,6 +14,7 @@ app.use(express.urlencoded({ extended: true }));
 app.use(express.json());
 app.use(cors());
 
+// Prueba de una api
 app.get("/api", (req, res) => {
     res.json({
         message: "Hola mundo",
@@ -104,3 +105,23 @@ app.post("/api/create/thread", async (req, res) => {
         threads: threadList,
     });
 });
+
+// Acepta el id del post y el id del usuario del frontend y busca el post que
+// recibió una reacción. Valida la reacción y añade al usuario al array de likes
+app.post("/api/thread/like", (req, res) => {
+    const { threadId, userId } = req.body;
+    const result = threadList.filter((thread) => thread.id == threadId);
+    const threadLikes = result[0].likes;
+    const authenticateReaction = threadLikes.filter((user) => user === userId);
+
+    if(authenticateReaction.length === 0) {
+        threadLikes.push(userId);
+        return res.json({
+            message: "¡Has reaccionado al post!",
+        });
+    }
+
+    res.json({
+        error_message: "¡Solo puedes reaccionar una vez!"
+    })
+})
