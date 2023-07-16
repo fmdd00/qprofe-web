@@ -1,3 +1,6 @@
+const { Novu } = require("@novu/node");
+const novu = new Novu("fe365d89231180940e0b0f2479a5dbcd");
+
 const express = require("express");
 const cors = require("cors");
 const app = express();
@@ -18,7 +21,7 @@ app.use(cors());
 app.get("/api", (req, res) => {
     res.json({
         message: "Hola mundo",
-    });  
+    });
 });
 
 //  Devuelve todos los post
@@ -39,7 +42,7 @@ app.post("/api/register", async (req, res) => {
     // Esta variable almacena la id de usuario, para controlar su sesión
     const id = generateID();
     console.log({ email, password, username, id })
-    
+
     //Verifica que no hayan usuarios ya registrados con las mismas credenciales antes de guardar los datos en la BD
     const result = users.filter(
         (user) => user.email === email && user.password === password
@@ -47,6 +50,10 @@ app.post("/api/register", async (req, res) => {
 
     if (result.length === 0) {
         const newUser = { id, email, password, username };
+
+        // Se crea un suscriptor de Novu usando el id e email de usuario
+        await novu.subscribers.identify(id, { email: email });
+
         users.push(newUser);
         return res.json({
             message: "Cuenta creada exitosamente",
@@ -66,7 +73,7 @@ app.post("/api/login", (req, res) => {
         (user) => user.email === email && user.password === password
     );
 
-    if(result.length !== 1) {
+    if (result.length !== 1) {
         return res.json({
             error_message: "Credenciales incorrectas",
         });
@@ -99,10 +106,39 @@ app.post("/api/create/thread", async (req, res) => {
         likes: [],
     });
 
+    await novu.topics.create({
+        key: threadId,
+        name: thread,
+    });
+
+    await novu.topics.addSubscribers(threadId, {
+        subscribers: [userId],
+        // puedo reemplazarlo con mi id de suscriptor de Novu para testear
+    });
+
     // Regresa una respuesta que contiene los posts
     res.json({
         message: "¡Post creado exitosamente!",
         threads: threadList,
+    });
+});
+
+// Acepta el id del post, id de usuario y respuesta(comentario)
+// desde el frontend, busca al post por id, y luego añade el id
+// de usuario, username y respuesta a los comentarios del post
+app.post("/api/create/reply", async (req, res) => {
+    const { id, userId, reply } = req.body;
+    const result = threadList.filter((thread) => thread.id === id);
+    const user = users.filter((user) => user.id === userId);
+
+    result[0].replies.unshift({ name: user[0].username, text: reply });
+
+    await novu.trigger("topicnotification", {
+        to: [{ type: "Topic", topicKey: id }],
+    });
+
+    res.json({
+        message: "¡Comentario añadido correctamente!",
     });
 });
 
@@ -114,7 +150,7 @@ app.post("/api/thread/like", (req, res) => {
     const threadLikes = result[0].likes;
     const authenticateReaction = threadLikes.filter((user) => user === userId);
 
-    if(authenticateReaction.length === 0) {
+    if (authenticateReaction.length === 0) {
         threadLikes.push(userId);
         return res.json({
             message: "¡Has reaccionado al post!",
@@ -125,3 +161,13 @@ app.post("/api/thread/like", (req, res) => {
         error_message: "¡Solo puedes reaccionar una vez!"
     })
 })
+
+app.post("/api/thread/replies", (req, res) => {
+    const { id } = req.body;
+    const result = threadList.filter((thread) => thread.id === id);
+
+    res.json({
+        replies: result[0].replies,
+        title: result[0].title,
+    });
+});

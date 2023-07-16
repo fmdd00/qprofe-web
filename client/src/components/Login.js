@@ -12,6 +12,7 @@ const Login = () => {
         console.log({ email, password });
         setEmail("");
         setPassword("");
+        loginUser();
     };
 
     // La función loginUser envía las credenciales del usuario al servidor Node.js y muestra una respuesta  
