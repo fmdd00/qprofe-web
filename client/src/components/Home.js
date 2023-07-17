@@ -12,7 +12,7 @@ const Home = () => {
 	useEffect(() => {
 		const checkUser = () => {
 			if (!localStorage.getItem("_id")) {
-				navigate("/");
+				navigate("/login");
 			} else {
 				fetch("http://localhost:4000/api/all/threads")
 					.then((res) => res.json())

@@ -26,7 +26,7 @@ const Register = () => {
 					alert(data.error_message);
 				} else {
 					alert("Cuenta creada exitosamente");
-					navigate("/");
+					navigate("/login");
 				}
 			})
 			.catch((err) => console.error(err));
@@ -72,7 +72,7 @@ const Register = () => {
 				/>
 				<button className='registerBtn'>Registrarme</button>
 				<p>
-					¿Ya tienes una cuenta? <Link to='/'>Iniciar sesión</Link>
+					¿Ya tienes una cuenta? <Link to='/login'>Iniciar sesión</Link>
 				</p>
 			</form>
 		</main>
