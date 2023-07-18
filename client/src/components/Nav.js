@@ -4,7 +4,7 @@ import {
 	PopoverNotificationCenter,
 	NotificationBell,
 } from "@novu/notification-center";
-import { useNavigate } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 
 const Nav = () => {
 	const navigate = useNavigate();
@@ -34,6 +34,7 @@ const Nav = () => {
 						)}
 					</PopoverNotificationCenter>
 				</NovuProvider>
+				<Link className="" to='/perfil' >Mi Perfil</Link>
 				<button onClick={signOut}>Cerrar Sesión</button>
 			</div>
 		</nav>

@@ -6,6 +6,7 @@ import Home from "./components/Home";
 import Replies from "./components/Replies";
 import ConfRegistro from "./components/ConfRegistro";
 import Bienvenida from "./components/Bienvenida";
+import Perfil from "./components/Perfil"
 
 const App = () => {
 	return (
@@ -18,6 +19,7 @@ const App = () => {
 					<Route path='/dashboard' element={<Home />} />
 					<Route path='/:id/replies' element={<Replies />} />
 					<Route path='/confirmacion' element={<ConfRegistro />} />
+					<Route path='/perfil' element={<Perfil />}/>
 				</Routes>
 			</BrowserRouter>
 		</div>
