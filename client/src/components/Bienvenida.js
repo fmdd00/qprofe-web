@@ -33,7 +33,7 @@ const Bienvenida = () => {
                                 <div className="col-6 d-grid">
                                     <button className="btn btn-outline-secondary btn-lg">
                                         <Link
-                                            to="/registro"
+                                            to="/register"
                                             style={{ textDecoration: "none", color: "black" }}
                                         >
 
