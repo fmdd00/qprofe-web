@@ -8,6 +8,7 @@ import ConfRegistro from "./components/ConfRegistro";
 import Bienvenida from "./components/Bienvenida";
 import Perfil from "./components/Perfil"
 
+
 const App = () => {
 	return (
 		<div>

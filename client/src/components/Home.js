@@ -2,7 +2,7 @@ import React, { useEffect, useState } from "react";
 import Likes from "../utils/Likes";
 import Comments from "../utils/Comments";
 import { useNavigate } from "react-router-dom";
-import Nav from "./Nav";
+import Navb from "./Navb";
 
 const Home = () => {
 	const [thread, setThread] = useState("");
@@ -48,42 +48,54 @@ const Home = () => {
 	};
 	return (
 		<>
-			<Nav />
-			<main className='home'>
-				<h2 className='homeTitle'>Crear un Post</h2>
-				<form className='homeForm' onSubmit={handleSubmit}>
-					<div className='home__container'>
-						<label htmlFor='thread'>¿De qué quieres hablar?</label>
-						<input
-							type='text'
-							name='thread'
-							required
-							value={thread}
-							onChange={(e) => setThread(e.target.value)}
-						/>
+			<Navb />
+			<div className='container'>
+				<div className="mt-4 border border-2 p-4 rounded col-12 mx-auto">
+					<div className="mt-2">
+						<h2 className='text-center'>Crear un Post</h2>
 					</div>
-					<button className='homeBtn'>Crear hilo</button>
-				</form>
-
-				<div className='thread__container'>
-					{threadList.map((thread) => (
-						<div className='thread__item' key={thread.id}>
-							<p>{thread.title}</p>
-							<div className='react__container'>
-								<Likes
-									numberOfLikes={thread.likes.length}
-									threadId={thread.id}
-								/>
-								<Comments
-									numberOfComments={thread.replies.length}
-									threadId={thread.id}
-									title={thread.title}
+					<div className="mt-4">
+						<form className='homeForm' onSubmit={handleSubmit}>
+							<div className='home__container'>
+								<label htmlFor='thread' className="form-label">¿De qué quieres hablar?</label>
+								<input
+									type='text'
+									name='thread'
+									required
+									value={thread}
+									onChange={(e) => setThread(e.target.value)}
 								/>
 							</div>
-						</div>
-					))}
+							<div>
+								<button className='homeBtn btn btn-primary' type="submit">Crear hilo</button>
+							</div>
+
+						</form>
+					</div>
+					<div><h3>Entradas receintes: </h3></div>
+
+					<div className='thread__container'>
+						{threadList.map((thread) => (
+							<div className='thread__item' key={thread.id}>
+
+								<p>{thread.title}</p>
+								<div className='react__container'>
+									<Likes
+										numberOfLikes={thread.likes.length}
+										threadId={thread.id}
+									/>
+									<Comments
+										numberOfComments={thread.replies.length}
+										threadId={thread.id}
+										title={thread.title}
+									/>
+								</div>
+							</div>
+						))}
+					</div>
 				</div>
-			</main>
+
+			</div>
 		</>
 	);
 };

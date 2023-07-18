@@ -1,16 +1,18 @@
 import React from 'react';
 import { Link } from 'react-router-dom';
 import profe from '../images/profe.jpg';
+import Bar from './bar/Bar';
 
 const Bienvenida = () => {
     return (
         <div className="home_page">
+            <Bar />
             <div className="container">
                 <div className="row mt-4">
                     <div className="col-6">
                         <div>
                             <h1 className="fw-bold fs-1" style={{ color: "#3C99DC" }}>
-                                CONSULTA LAS VALORACIONES DE LOS PROFESORES HECHAS POR LOS MISMOS ESTUDIANTES
+                                REALIZA CONSULTAS HACIA OTROS ESTUDIANTES Y COMPARTE TU CONOCIMIENTO
                             </h1>
                         </div>
                         <div className="mt-4">
@@ -57,16 +59,6 @@ const Bienvenida = () => {
                             Pantallazo de prueba Si puedes ver esto, significa que todo
                             funciona bien :) Luego le pongo una interfaz más chvr.
                         </div>
-                        {/*
-                  <button className="btn btn-primary">
-                    <Link
-                      to="/exito"
-                      style={{ textDecoration: "none", color: "black" }}
-                    >
-                      <FontAwesomeIcon icon="fa-solid fa-clipboard" /> exito prueba
-                    </Link>
-                  </button>
-                */}
                     </div>
                 </div>
             </div>

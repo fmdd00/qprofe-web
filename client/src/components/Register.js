@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Bar from "./bar/Bar";
 
 const Register = () => {
 	const [username, setUsername] = useState("");
@@ -40,42 +41,66 @@ const Register = () => {
 		setPassword("");
 	};
 	return (
-		<main className='register'>
-			<h1 className='registerTitle'>Crea una cuenta</h1>
-			<form className='registerForm' onSubmit={handleSubmit}>
-				<label htmlFor='username'>Nombre:</label>
-				<input
-					type='text'
-					name='username'
-					id='username'
-					required
-					value={username}
-					onChange={(e) => setUsername(e.target.value)}
-				/>
-				<label htmlFor='email'>Correo electrónico:</label>
-				<input
-					type='text'
-					name='email'
-					id='email'
-					required
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<label htmlFor='password'>Contraseña:</label>
-				<input
-					type='password'
-					name='password'
-					id='password'
-					required
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-				/>
-				<button className='registerBtn'>Registrarme</button>
-				<p>
-					¿Ya tienes una cuenta? <Link to='/login'>Iniciar sesión</Link>
-				</p>
-			</form>
-		</main>
+		<div>
+			<Bar />
+			<div className='container'>
+				<div className="mt-4 border border-2 p-4 rounded col-6 mx-auto">
+					<div className="mt-2">
+						<h1 className='text-center'>Crea una cuenta</h1>
+					</div>
+					<div className="mt-4">
+						<form className='registerForm' onSubmit={handleSubmit}>
+							<div className="mb-3">
+								<label htmlFor='username' className="form-label">Nombre:</label>
+								<input
+									className="form-control"
+									type='text'
+									name='username'
+									id='username'
+									required
+									value={username}
+									onChange={(e) => setUsername(e.target.value)}
+									placeholder="Nombre completo"
+								/>
+							</div>
+							<div className="mb-3">
+								<label htmlFor='email' className="form-label">Correo electrónico:</label>
+								<input
+									className="form-control"
+									type='text'
+									name='email'
+									id='email'
+									required
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+									placeholder="Ingresar email"
+								/>
+							</div>
+							<div className="mb-3">
+								<label htmlFor='password' className="form-label">Contraseña:</label>
+								<input
+									className="form-control"
+									type='password'
+									name='password'
+									id='password'
+									required
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
+									placeholder="Ingresar contraseña"
+								/>
+							</div>
+							<div className="d-grid gap-2">
+								<button type='submit' className='btn btn-primary'>Registrarme</button>
+							</div>
+							<p className="mt-3">
+								¿Ya tienes una cuenta? <Link to='/login'>Iniciar sesión</Link>
+							</p>
+						</form>
+					</div>
+				</div>
+			</div>
+		</div>
+
 	);
 };
 

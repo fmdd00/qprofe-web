@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useNavigate } from "react-router-dom";
+import Bar from "./bar/Bar";
 
 const Login = () => {
 	const [email, setEmail] = useState("");
@@ -38,33 +39,53 @@ const Login = () => {
 	};
 
 	return (
-		<main className='login'>
-			<h1 className='loginTitle'>Iniciar Sesión</h1>
-			<form className='loginForm' onSubmit={handleSubmit}>
-				<label htmlFor='email'>Correo electrónico:</label>
-				<input
-					type='text'
-					name='email'
-					id='email'
-					required
-					value={email}
-					onChange={(e) => setEmail(e.target.value)}
-				/>
-				<label htmlFor='password'>Contraseña:</label>
-				<input
-					type='password'
-					name='password'
-					id='password'
-					required
-					value={password}
-					onChange={(e) => setPassword(e.target.value)}
-				/>
-				<button className='loginBtn'>Iniciar Sesión</button>
-				<p>
-					¿No tienes una cuenta? <Link to='/register'>Regístrate</Link>
-				</p>
-			</form>
-		</main>
+		<div>
+			<Bar />
+			<div className='container'>
+				<div className="mt-4 border border-2 p-4 rounded col-6 mx-auto">
+					<div className="mt-2">
+						<h1 className='text-center'>Iniciar Sesión</h1>
+					</div>
+					<div className="mt-4">
+						<form className='loginForm' onSubmit={handleSubmit}>
+							<div className="mb-3">
+								<label htmlFor='email' className="form-label">Correo electrónico:</label>
+								<input
+									className="form-control"
+									type='text'
+									name='email'
+									id='email'
+									required
+									value={email}
+									onChange={(e) => setEmail(e.target.value)}
+									placeholder="Ingresar email"
+								/>
+							</div>
+							<div className="mb-3">
+								<label htmlFor='password' className="form-label">Contraseña:</label>
+								<input
+									className="form-control"
+									type='password'
+									name='password'
+									id='password'
+									required
+									value={password}
+									onChange={(e) => setPassword(e.target.value)}
+									placeholder="Ingresar contraseña"
+								/>
+							</div>
+							<div className="d-grid gap-2">
+								<button className='btn btn-primary' type="submit">Iniciar Sesión</button>
+							</div>
+							<p className="mt-3">
+								¿No tienes una cuenta? <Link to='/register'>Regístrate</Link>
+							</p>
+						</form>
+					</div>
+
+				</div>
+			</div>
+		</div>
 	);
 };
 
